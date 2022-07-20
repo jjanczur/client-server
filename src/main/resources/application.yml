@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.springframework.security: INFO
+    org.springframework.security.oauth2: INFO
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          eloprindelse:
+            provider: eloprindelse
+            client-id:
+            client-secret:
+            authorization-grant-type: authorization_code
+            redirect-uri: "http://localhost:8080/login/oauth2/code/eloprindelse"
+            scope: "openid, offline, profile, email, meteringpoints.read, measurements.read, ggo.read, ggo.transfer, ggo.retire"
+            client-name: eloprindelse
+        provider:
+          eloprindelse:
+            issuer-uri: https://oauth.eloprindelse.dk/
+            authorization-uri: https://oauth.eloprindelse.dk/oauth2/auth
+            token-uri: https://oauth.eloprindelse.dk/oauth2/token
